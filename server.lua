@@ -72,8 +72,10 @@ end)
 
 -- Items
 
-for benchType, _ in pairs(Config) do
-    QBCore.Functions.CreateUseableItem(benchType, function(source)
-        TriggerClientEvent('qb-crafting:client:useCraftingTable', source, benchType)
-    end)
+for benchType, v in pairs(Config) do
+    if type(v) == 'table' then
+        QBCore.Functions.CreateUseableItem(benchType, function(source)
+            TriggerClientEvent('qb-crafting:client:useCraftingTable', source, benchType)
+        end)
+    end
 end
